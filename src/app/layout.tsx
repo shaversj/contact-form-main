@@ -15,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={karla.variable}>{children}</body>
+      <body className={karla.variable}>
+        <main className={"grid min-h-screen place-items-center bg-green-200"}>{children}</main>
+      </body>
     </html>
   );
 }
