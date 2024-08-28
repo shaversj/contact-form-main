@@ -6,7 +6,8 @@ export const FormSchema = z.object({
   lastName: z.string().min(1, { message: "This field is required" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
   queryType: z.enum(["General Enquiry", "Support Request"], { message: "Please select a query type" }),
-  // consent: z.boolean({ required_error: "To submit this form, please consent to being contacted" }),
+  message: z.string().min(1, { message: "This field is required" }),
+  consent: z.enum(["acknowledged"], { message: "To submit this form, please consent to being contacted" }),
 });
 
 type Register = UseFormRegister<FormValues>;

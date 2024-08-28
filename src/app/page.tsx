@@ -43,6 +43,32 @@ export default function Home() {
           </div>
         </fieldset>
 
+        <div>
+          <label className={"block text-[18px] leading-[150%] text-grey-900"} htmlFor={"message"}>
+            Message <span className={"text-green-600"}>*</span>
+          </label>
+          <textarea
+            {...register("message")}
+            aria-invalid={(errors as Record<string, any>)["message"]?.message ? "true" : "false"}
+            className={
+              "text-grey-600 aria mt-[.5rem] w-full rounded-lg border border-grey-500 px-6 py-3 hover:border-green-600 focus:outline-none aria-[invalid=true]:border-red"
+            }
+          ></textarea>
+          {(errors as Record<string, any>)["message"]?.message && (
+            <p className={"pt-[.5rem] leading-[150%] text-red"}>{(errors as Record<string, any>)["message"].message.toString()}</p>
+          )}
+        </div>
+
+        <div>
+          <input type={"checkbox"} value={"acknowledged"} {...register("consent")} />
+          <label className={"pl-3 text-grey-900"} htmlFor={"consent"}>
+            I consent to being contacted by the team <span className={"text-green-600"}>*</span>
+          </label>
+          {(errors as Record<string, any>)["consent"]?.message && (
+            <p className={"pt-[.5rem] leading-[150%] text-red"}>{(errors as Record<string, any>)["consent"].message.toString()}</p>
+          )}
+        </div>
+
         <button>Submit</button>
       </form>
     </div>
