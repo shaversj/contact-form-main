@@ -2,8 +2,7 @@ import type { FormFieldProps } from "@/types/types";
 import { FormValues } from "@/types/types";
 
 export default function FormField({ label, name, type, value, placeholder, register, errors, ...rest }: FormFieldProps) {
-  const borderColor = (errors as Record<string, any>)[name]?.message ? "border-red" : "border-grey-500";
-  const baseInputClass = "text-grey-600 rounded-lg border hover:border-green-600 focus:outline-none " + borderColor;
+  const baseInputClass = "text-grey-600 rounded-lg border hover:border-green-600 focus:outline-none border-grey-500 aria-[invalid=true]:border-red ";
   const nonRadioInputClass = `${baseInputClass} w-full block px-6 py-3 mt-[.5rem]`;
   return (
     <>
@@ -15,7 +14,15 @@ export default function FormField({ label, name, type, value, placeholder, regis
         </>
       )}
 
-      <input id={name} className={type === "radio" ? baseInputClass : nonRadioInputClass} {...register(name as keyof FormValues)} {...rest} type={type} value={value} />
+      <input
+        id={name}
+        className={type === "radio" ? baseInputClass : nonRadioInputClass}
+        {...register(name as keyof FormValues)}
+        {...rest}
+        type={type}
+        value={value}
+        aria-invalid={(errors as Record<string, any>)["message"]?.message ? "true" : "false"}
+      />
 
       {type === "radio" && (
         <>
