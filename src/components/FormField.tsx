@@ -21,7 +21,7 @@ export default function FormField({ label, name, type, value, placeholder, regis
         {...rest}
         type={type}
         value={value}
-        aria-invalid={(errors as Record<string, any>)["message"]?.message ? "true" : "false"}
+        aria-invalid={(errors as Record<string, any>)[name]?.message ? "true" : "false"}
       />
 
       {type === "radio" && (
