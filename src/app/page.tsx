@@ -1,6 +1,6 @@
 "use client";
 
-import { FieldErrors, Form, SubmitHandler, useForm } from "react-hook-form";
+import { FieldErrors, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormSchema, FormValues } from "@/types/types";
 import FormField from "@/components/FormField";
@@ -20,7 +20,7 @@ export default function Home() {
   const onError = (errors: FieldErrors<FormValues>, e: any) => console.log("FORM ERRORS: ", errors, e);
 
   return (
-    <div className="bg-white p-10 font-karla lg:h-[773px] lg:w-[736px]">
+    <div className="bg-white p-10 font-karla lg:h-[800px] lg:w-[736px]">
       <h1 className={"text-[32px] font-bold leading-[100%] tracking-[1px] text-grey-900"}>Contact Us</h1>
       <form className={"space-y-6 pt-8"} onSubmit={handleSubmit(onSubmit, onError)}>
         <div className={"grid grid-cols-2 gap-x-4"}>
@@ -64,20 +64,14 @@ export default function Home() {
           )}
         </div>
 
-        <div className={"flex flex-row-reverse justify-end"}>
-          <Label htmlFor={"consent"} required={true} displayName={"I consent to being contacted by the team"} variant={"checkbox"} />
+        <div className={"relative"}>
           <Input name={"consent"} type={"checkbox"} register={register} value={"acknowledged"} variant={"checkbox"} errors={errors} />
-          {/*<input type={"checkbox"} value={"acknowledged"} {...register("consent")} />*/}
-
-          {/*<label className={"pl-3 text-grey-900"} htmlFor={"consent"}>*/}
-          {/*  I consent to being contacted by the team <span className={"text-green-600"}>*</span>*/}
-          {/*</label>*/}
-          {/*{(errors as Record<string, any>)["consent"]?.message && (*/}
-          {/*  <p className={"pt-[.5rem] leading-[150%] text-red"}>{(errors as Record<string, any>)["consent"].message.toString()}</p>*/}
-          {/*)}*/}
+          <Label htmlFor={"consent"} required={true} displayName={"I consent to being contacted by the team "} variant={"checkbox"}></Label>
         </div>
 
-        <button className={"mx-auto h-[59px] w-full rounded-lg bg-green-600 py-3 text-[18px] font-bold leading-[150%] text-white"}>Submit</button>
+        <div>
+          <button className={"mx-auto h-[59px] w-full rounded-lg bg-green-600 py-3 text-[18px] font-bold leading-[150%] text-white"}>Submit</button>
+        </div>
       </form>
     </div>
   );
