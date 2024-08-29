@@ -18,7 +18,7 @@ export default function Home() {
   const onError = (errors: FieldErrors<FormValues>, e: any) => console.log("FORM ERRORS: ", errors, e);
 
   return (
-    <div className="font-karla bg-white p-10 lg:h-[773px] lg:w-[736px]">
+    <div className="bg-white p-10 font-karla lg:h-[773px] lg:w-[736px]">
       <h1 className={"text-[32px] font-bold leading-[100%] tracking-[1px] text-grey-900"}>Contact Us</h1>
       <form className={"space-y-6 pt-8"} onSubmit={handleSubmit(onSubmit, onError)}>
         <div className={"grid grid-cols-2 gap-x-4"}>
@@ -69,7 +69,7 @@ export default function Home() {
           )}
         </div>
 
-        <button>Submit</button>
+        <button className={"mx-auto h-[59px] w-full rounded-lg bg-green-600 py-3 text-[18px] font-bold leading-[150%] text-white"}>Submit</button>
       </form>
     </div>
   );
