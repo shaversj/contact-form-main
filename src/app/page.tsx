@@ -4,6 +4,8 @@ import { FieldErrors, Form, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormSchema, FormValues } from "@/types/types";
 import FormField from "@/components/FormField";
+import Label from "@/components/Label";
+import Input from "@/components/Input";
 
 export default function Home() {
   const {
@@ -23,15 +25,18 @@ export default function Home() {
       <form className={"space-y-6 pt-8"} onSubmit={handleSubmit(onSubmit, onError)}>
         <div className={"grid grid-cols-2 gap-x-4"}>
           <div>
-            <FormField label={"First Name"} name={"firstName"} type={"text"} register={register} errors={errors} />
+            <Label htmlFor={"firstName"} required={true} displayName={"First Name"} />
+            <Input name={"firstName"} type={"text"} register={register} errors={errors} />
           </div>
           <div>
-            <FormField label={"Last Name"} name={"lastName"} type={"text"} register={register} errors={errors} />
+            <Label htmlFor={"lastName"} required={true} displayName={"Last Name"} />
+            <Input name={"lastName"} type={"text"} register={register} errors={errors} />
           </div>
         </div>
 
         <div>
-          <FormField label={"Email"} name={"email"} type={"email"} register={register} errors={errors} />
+          <Label htmlFor={"email"} required={true} displayName={"Email"} />
+          <Input name={"email"} type={"email"} register={register} errors={errors} />
         </div>
 
         <fieldset className={"flex gap-x-3"} id={"queryType"}>
@@ -59,14 +64,17 @@ export default function Home() {
           )}
         </div>
 
-        <div>
-          <input type={"checkbox"} value={"acknowledged"} {...register("consent")} />
-          <label className={"pl-3 text-grey-900"} htmlFor={"consent"}>
-            I consent to being contacted by the team <span className={"text-green-600"}>*</span>
-          </label>
-          {(errors as Record<string, any>)["consent"]?.message && (
-            <p className={"pt-[.5rem] leading-[150%] text-red"}>{(errors as Record<string, any>)["consent"].message.toString()}</p>
-          )}
+        <div className={"flex flex-row-reverse justify-end"}>
+          <Label htmlFor={"consent"} required={true} displayName={"I consent to being contacted by the team"} variant={"checkbox"} />
+          <Input name={"consent"} type={"checkbox"} register={register} value={"acknowledged"} variant={"checkbox"} errors={errors} />
+          {/*<input type={"checkbox"} value={"acknowledged"} {...register("consent")} />*/}
+
+          {/*<label className={"pl-3 text-grey-900"} htmlFor={"consent"}>*/}
+          {/*  I consent to being contacted by the team <span className={"text-green-600"}>*</span>*/}
+          {/*</label>*/}
+          {/*{(errors as Record<string, any>)["consent"]?.message && (*/}
+          {/*  <p className={"pt-[.5rem] leading-[150%] text-red"}>{(errors as Record<string, any>)["consent"].message.toString()}</p>*/}
+          {/*)}*/}
         </div>
 
         <button className={"mx-auto h-[59px] w-full rounded-lg bg-green-600 py-3 text-[18px] font-bold leading-[150%] text-white"}>Submit</button>

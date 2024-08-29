@@ -26,7 +26,7 @@ type InputProps = {
   errors?: Errors;
 };
 
-export default function Input({ name, type, register, required, placeholder, value, variant = "text", errors }: InputProps) {
+export default function Input({ name, type, register, required = false, placeholder, value, variant = "text", errors }: InputProps) {
   return (
     <>
       <input
@@ -39,7 +39,7 @@ export default function Input({ name, type, register, required, placeholder, val
         className={VARIANTS[variant]}
         aria-invalid={(errors as Record<string, any>)[name]?.message ? "true" : "false"}
       />
-      {(errors as Record<string, any>)[name]?.message && <p className={"pt-[.5rem] leading-[150%] text-red"}>{(errors as Record<string, any>)[name].message.toString()}</p>}
+      {(errors as Record<string, any>)[name]?.message && <p className={"ro pt-[.5rem] leading-[150%] text-red"}>{(errors as Record<string, any>)[name].message.toString()}</p>}
     </>
   );
 }
