@@ -20,7 +20,7 @@ export default function Label({ htmlFor, required, displayName, variant = "text"
   return (
     <label className={VARIANTS[variant]} htmlFor={htmlFor}>
       <span className={""}>{displayName}</span>
-      {required && <span className={"text-green-600"}>*</span>}
+      {required && <span className={"text-green-600"}> *</span>}
     </label>
   );
 }

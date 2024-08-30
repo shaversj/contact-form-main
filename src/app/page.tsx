@@ -6,6 +6,9 @@ import { FormSchema, FormValues } from "@/types/types";
 import FormField from "@/components/FormField";
 import Label from "@/components/Label";
 import Input from "@/components/Input";
+import FieldSet from "@/components/FieldSet";
+import RadioGroupItem from "@/components/RadioGroupItem";
+import RadioGroupErrors from "@/components/RadioGroupErrors";
 
 export default function Home() {
   const {
@@ -39,14 +42,13 @@ export default function Home() {
           <Input name={"email"} type={"email"} register={register} errors={errors} />
         </div>
 
-        <fieldset className={"flex gap-x-3"} id={"queryType"}>
-          <div className={"flex h-[51px] grow items-center rounded-lg border border-amber-950 pl-[26.25px]"}>
-            <FormField label={"General Enquiry"} name={"queryType"} value={"General Enquiry"} type={"radio"} register={register} errors={errors} />
-          </div>
-          <div className={"flex h-[51px] grow items-center rounded-lg border border-amber-950 pl-[26.25px]"}>
-            <FormField label={"Support Request"} name={"queryType"} value={"Support Request"} type={"radio"} register={register} errors={errors} />
-          </div>
-        </fieldset>
+        <div>
+          <FieldSet legend={"Query Type"} name={"queryType"}>
+            <RadioGroupItem name={"queryType"} value={"General Enquiry"} checked={false} displayName={"General Enquiry"} register={register} errors={errors} />
+            <RadioGroupItem name={"queryType"} value={"Support Request"} checked={false} displayName={"Support Request"} register={register} errors={errors} />
+          </FieldSet>
+          <RadioGroupErrors errors={errors} name={"queryType"} />
+        </div>
 
         <div>
           <label className={"block text-[18px] leading-[150%] text-grey-900"} htmlFor={"message"}>
