@@ -3,12 +3,12 @@
 import { FieldErrors, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormSchema, FormValues } from "@/types/types";
-import FormField from "@/components/FormField";
 import Label from "@/components/Label";
 import Input from "@/components/Input";
 import FieldSet from "@/components/FieldSet";
 import RadioGroupItem from "@/components/RadioGroupItem";
 import RadioGroupErrors from "@/components/RadioGroupErrors";
+import TextArea from "@/components/TextArea";
 
 export default function Home() {
   const {
@@ -51,19 +51,8 @@ export default function Home() {
         </div>
 
         <div>
-          <label className={"block text-[18px] leading-[150%] text-grey-900"} htmlFor={"message"}>
-            Message <span className={"text-green-600"}>*</span>
-          </label>
-          <textarea
-            {...register("message")}
-            aria-invalid={(errors as Record<string, any>)["message"]?.message ? "true" : "false"}
-            className={
-              "text-grey-600 aria mt-[.5rem] w-full rounded-lg border border-grey-500 px-6 py-3 hover:border-green-600 focus:outline-none aria-[invalid=true]:border-red"
-            }
-          ></textarea>
-          {(errors as Record<string, any>)["message"]?.message && (
-            <p className={"pt-[.5rem] leading-[150%] text-red"}>{(errors as Record<string, any>)["message"].message.toString()}</p>
-          )}
+          <Label htmlFor={"message"} required={true} displayName={"Message"} />
+          <TextArea name={"message"} register={register} errors={errors} />
         </div>
 
         <div className={"relative"}>
