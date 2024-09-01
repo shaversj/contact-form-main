@@ -11,16 +11,15 @@ const VARIANTS: Record<Variant, string> = {
 
 type LabelProps = {
   htmlFor: string;
-  required: boolean;
   displayName?: string;
   variant?: Variant;
 };
 
-export default function Label({ htmlFor, required, displayName, variant = "text" }: LabelProps) {
+export default function Label({ htmlFor, displayName, variant = "text" }: LabelProps) {
   return (
     <label className={VARIANTS[variant]} htmlFor={htmlFor}>
       <span className={""}>{displayName}</span>
-      {required && <span className={"text-green-600"}> *</span>}
+      {htmlFor !== "queryType" && <span className={"text-green-600"}> *</span>}
     </label>
   );
 }

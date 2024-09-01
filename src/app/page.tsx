@@ -5,10 +5,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormSchema, FormValues } from "@/types/types";
 import Label from "@/components/Label";
 import Input from "@/components/Input";
-import FieldSet from "@/components/FieldSet";
+import RadioGroupContainer from "@/components/RadioGroupContainer";
 import RadioGroupItem from "@/components/RadioGroupItem";
-import RadioGroupErrors from "@/components/RadioGroupErrors";
+import FormErrorMessages from "@/components/FormErrorMessages";
 import TextArea from "@/components/TextArea";
+import Button from "@/components/Button";
 
 export default function Home() {
   const {
@@ -24,44 +25,49 @@ export default function Home() {
 
   return (
     <div className="bg-white p-10 font-karla lg:h-[800px] lg:w-[736px]">
-      <h1 className={"text-[32px] font-bold leading-[100%] tracking-[1px] text-grey-900"}>Contact Us</h1>
+      <h1 className={"text-[2rem] font-bold leading-[100%] tracking-[0.063rem] text-grey-900"}>Contact Us</h1>
       <form className={"space-y-6 pt-8"} onSubmit={handleSubmit(onSubmit, onError)}>
         <div className={"grid grid-cols-2 gap-x-4"}>
           <div>
-            <Label htmlFor={"firstName"} required={true} displayName={"First Name"} />
-            <Input name={"firstName"} type={"text"} register={register} errors={errors} />
+            <Label htmlFor={"firstName"} displayName={"First Name"} />
+            <Input name={"firstName"} type={"text"} register={register} errors={errors} variant={"text"} />
+            <FormErrorMessages errors={errors} name={"firstName"} />
           </div>
           <div>
-            <Label htmlFor={"lastName"} required={true} displayName={"Last Name"} />
-            <Input name={"lastName"} type={"text"} register={register} errors={errors} />
+            <Label htmlFor={"lastName"} displayName={"Last Name"} />
+            <Input name={"lastName"} type={"text"} register={register} errors={errors} variant={"text"} />
+            <FormErrorMessages errors={errors} name={"lastName"} />
           </div>
         </div>
 
         <div>
-          <Label htmlFor={"email"} required={true} displayName={"Email"} />
-          <Input name={"email"} type={"email"} register={register} errors={errors} />
+          <Label htmlFor={"email"} displayName={"Email"} />
+          <Input name={"email"} type={"email"} register={register} errors={errors} variant={"text"} />
+          <FormErrorMessages errors={errors} name={"email"} />
         </div>
 
         <div>
-          <FieldSet legend={"Query Type"} name={"queryType"}>
-            <RadioGroupItem name={"queryType"} value={"General Enquiry"} checked={false} displayName={"General Enquiry"} register={register} errors={errors} />
-            <RadioGroupItem name={"queryType"} value={"Support Request"} checked={false} displayName={"Support Request"} register={register} errors={errors} />
-          </FieldSet>
-          <RadioGroupErrors errors={errors} name={"queryType"} />
+          <RadioGroupContainer legend={"Query Type"} name={"queryType"}>
+            <RadioGroupItem name={"queryType"} value={"General Enquiry"} displayName={"General Enquiry"} register={register} errors={errors} />
+            <RadioGroupItem name={"queryType"} value={"Support Request"} displayName={"Support Request"} register={register} errors={errors} />
+          </RadioGroupContainer>
+          <FormErrorMessages errors={errors} name={"queryType"} />
         </div>
 
         <div>
-          <Label htmlFor={"message"} required={true} displayName={"Message"} />
+          <Label htmlFor={"message"} displayName={"Message"} />
           <TextArea name={"message"} register={register} errors={errors} />
-        </div>
-
-        <div className={"relative"}>
-          <Input name={"consent"} type={"checkbox"} register={register} value={"acknowledged"} variant={"checkbox"} errors={errors} />
-          <Label htmlFor={"consent"} required={true} displayName={"I consent to being contacted by the team "} variant={"checkbox"}></Label>
+          <FormErrorMessages errors={errors} name={"message"} />
         </div>
 
         <div>
-          <button className={"mx-auto h-[59px] w-full rounded-lg bg-green-600 py-3 text-[18px] font-bold leading-[150%] text-white"}>Submit</button>
+          <Input name={"consent"} type={"checkbox"} register={register} value={"acknowledged"} variant={"checkbox"} errors={errors} />
+          <Label htmlFor={"consent"} displayName={"I consent to being contacted by the team "} variant={"checkbox"}></Label>
+          <FormErrorMessages errors={errors} name={"consent"} />
+        </div>
+
+        <div className={"pt-4"}>
+          <Button>Submit</Button>
         </div>
       </form>
     </div>

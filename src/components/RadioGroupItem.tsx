@@ -1,30 +1,18 @@
+import Label from "@/components/Label";
+import Input from "@/components/Input";
 type RadioGroupItemProps = {
   name: string;
   value: string;
-  checked: boolean;
-  onChange?: () => void;
   displayName: string;
   register: any;
   errors?: any;
 };
 
-export default function RadioGroupItem({ name, value, checked, onChange, displayName, register, errors }: RadioGroupItemProps) {
+export default function RadioGroupItem({ name, value, displayName, register, errors }: RadioGroupItemProps) {
   return (
-    <div className={"flex h-[51px] grow items-center rounded-lg border border-grey-500 pl-[26.25px] hover:border-green-600"}>
-      <input
-        id={name}
-        name={name}
-        value={value}
-        type={"radio"}
-        checked={checked}
-        onChange={onChange}
-        {...register(name)}
-        errors={errors}
-        className={"rounded border text-green-600 hover:border-green-600 focus:outline-none"}
-      />
-      <label htmlFor={name} className={"pl-3 text-[1.125rem] leading-[150%] text-grey-900"}>
-        {displayName}
-      </label>
+    <div className={"flex h-[3.188rem] grow items-center rounded-lg border border-grey-500 pl-[1.641rem] hover:border-green-600"}>
+      <Input name={name} type={"radio"} register={register} value={value} variant={"radio"} errors={errors} />
+      <Label htmlFor={name} displayName={displayName} variant={"radio"} />
     </div>
   );
 }
