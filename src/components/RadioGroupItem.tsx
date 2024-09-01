@@ -10,7 +10,7 @@ type RadioGroupItemProps = {
 
 export default function RadioGroupItem({ name, value, checked, onChange, displayName, register, errors }: RadioGroupItemProps) {
   return (
-    <div className={"flex h-[51px] grow items-center rounded-lg border border-amber-950 pl-[26.25px]"}>
+    <div className={"flex h-[51px] grow items-center rounded-lg border border-grey-500 pl-[26.25px] hover:border-green-600"}>
       <input
         id={name}
         name={name}
@@ -20,7 +20,7 @@ export default function RadioGroupItem({ name, value, checked, onChange, display
         onChange={onChange}
         {...register(name)}
         errors={errors}
-        className={"rounded border border-green-600 text-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"}
+        className={"rounded border text-green-600 hover:border-green-600 focus:outline-none"}
       />
       <label htmlFor={name} className={"pl-3 text-[1.125rem] leading-[150%] text-grey-900"}>
         {displayName}
