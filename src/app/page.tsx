@@ -71,7 +71,7 @@ export default function Home() {
           <FormErrorMessages errors={errors} name={"message"} />
         </div>
 
-        <div>
+        <div className={"flex items-center"}>
           <Input name={"consent"} type={"checkbox"} register={register} value={"acknowledged"} variant={"checkbox"} errors={errors} />
           <Label htmlFor={"consent"} displayName={"I consent to being contacted by the team "} variant={"checkbox"}></Label>
           <FormErrorMessages errors={errors} name={"consent"} />
