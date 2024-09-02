@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Field, UseFormRegister, FieldErrors } from "react-hook-form";
+import { UseFormRegister, FieldErrors } from "react-hook-form";
 
 export const FormSchema = z.object({
   firstName: z.string().min(1, { message: "This field is required" }),

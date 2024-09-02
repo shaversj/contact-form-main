@@ -10,6 +10,8 @@ import RadioGroupItem from "@/components/RadioGroupItem";
 import FormErrorMessages from "@/components/FormErrorMessages";
 import TextArea from "@/components/TextArea";
 import Button from "@/components/Button";
+import ToastErrorMessage from "@/components/ToastErrorMessage";
+import toast from "react-hot-toast";
 
 export default function Home() {
   const {
@@ -20,11 +22,20 @@ export default function Home() {
     resolver: zodResolver(FormSchema),
   });
 
-  const onSubmit: SubmitHandler<FormValues> = (data, e: any) => console.log(data, e);
+  const notify = () =>
+    toast(<ToastErrorMessage />, {
+      style: {
+        width: "auto",
+        maxWidth: 500,
+        backgroundColor: "hsl(187, 24%, 22%)",
+      },
+    });
+
+  const onSubmit: SubmitHandler<FormValues> = (data, e: any) => notify();
   const onError = (errors: FieldErrors<FormValues>, e: any) => console.log("FORM ERRORS: ", errors, e);
 
   return (
-    <div className="bg-white p-10 font-karla lg:h-[800px] lg:w-[736px]">
+    <div className="rounded-lg bg-white p-10 font-karla lg:h-[800px] lg:w-[736px]">
       <h1 className={"text-[2rem] font-bold leading-[100%] tracking-[0.063rem] text-grey-900"}>Contact Us</h1>
       <form className={"space-y-6 pt-8"} onSubmit={handleSubmit(onSubmit, onError)}>
         <div className={"grid grid-cols-2 gap-x-4"}>
