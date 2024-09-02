@@ -38,7 +38,7 @@ export default function Home() {
     <div className="rounded-lg bg-white p-10 font-karla lg:h-[800px] lg:w-[736px]">
       <h1 className={"text-[2rem] font-bold leading-[100%] tracking-[0.063rem] text-grey-900"}>Contact Us</h1>
       <form className={"space-y-6 pt-8"} onSubmit={handleSubmit(onSubmit, onError)}>
-        <div className={"grid grid-cols-2 gap-x-4"}>
+        <div className={"grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-4 md:gap-y-0"}>
           <div>
             <Label htmlFor={"firstName"} displayName={"First Name"} />
             <Input name={"firstName"} type={"text"} register={register} errors={errors} variant={"text"} />
