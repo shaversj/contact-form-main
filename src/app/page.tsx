@@ -35,8 +35,8 @@ export default function Home() {
   const onError = (errors: FieldErrors<FormValues>, e: any) => console.log("FORM ERRORS: ", errors, e);
 
   return (
-    <div className="rounded-lg bg-white p-10 font-karla lg:h-[50rem] lg:w-[46rem]">
-      <h1 className={"text-[2rem] font-bold leading-[100%] tracking-[0.063rem] text-grey-900"}>Contact Us</h1>
+    <div className="rounded-lg bg-white p-10 font-karla lg:w-[46rem]">
+      <h1 className={"text-[2rem] font-bold leading-[100%] tracking-[-0.063rem] text-grey-900"}>Contact Us</h1>
       <form className={"space-y-6 pt-8"} onSubmit={handleSubmit(onSubmit, onError)}>
         <div className={"grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-4 md:gap-y-0"}>
           <div>
@@ -71,9 +71,11 @@ export default function Home() {
           <FormErrorMessages errors={errors} name={"message"} />
         </div>
 
-        <div className={"flex items-center"}>
-          <Input name={"consent"} type={"checkbox"} register={register} value={"acknowledged"} variant={"checkbox"} errors={errors} />
-          <Label htmlFor={"consent"} displayName={"I consent to being contacted by the team "} variant={"checkbox"}></Label>
+        <div>
+          <div className={"flex items-center"}>
+            <Input name={"consent"} type={"checkbox"} register={register} value={"acknowledged"} variant={"checkbox"} errors={errors} />
+            <Label htmlFor={"consent"} displayName={"I consent to being contacted by the team "} variant={"checkbox"} />
+          </div>
           <FormErrorMessages errors={errors} name={"consent"} />
         </div>
 
