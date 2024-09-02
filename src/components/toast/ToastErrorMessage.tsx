@@ -1,4 +1,4 @@
-import SuccessCheckSVG from "@/components/SuccessCheckSVG";
+import SuccessCheckSVG from "@/components/toast/SuccessCheckSVG";
 
 export default function ToastErrorMessage() {
   return (

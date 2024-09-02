@@ -3,14 +3,14 @@
 import { FieldErrors, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormSchema, FormValues } from "@/types/types";
-import Label from "@/components/Label";
-import Input from "@/components/Input";
-import RadioGroupContainer from "@/components/RadioGroupContainer";
-import RadioGroupItem from "@/components/RadioGroupItem";
-import FormErrorMessages from "@/components/FormErrorMessages";
-import TextArea from "@/components/TextArea";
-import Button from "@/components/Button";
-import ToastErrorMessage from "@/components/ToastErrorMessage";
+import Label from "@/components/form/Label";
+import Input from "@/components/form/Input";
+import RadioGroupContainer from "@/components/form/RadioGroupContainer";
+import RadioGroupItem from "@/components/form/RadioGroupItem";
+import FormErrorMessages from "@/components/form/FormErrorMessages";
+import TextArea from "@/components/form/TextArea";
+import Button from "@/components/form/Button";
+import ToastErrorMessage from "@/components/toast/ToastErrorMessage";
 import toast from "react-hot-toast";
 
 export default function Home() {

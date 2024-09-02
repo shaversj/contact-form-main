@@ -1,5 +1,5 @@
-import Label from "@/components/Label";
-import Input from "@/components/Input";
+import Label from "@/components/form/Label";
+import Input from "@/components/form/Input";
 
 type RadioGroupItemProps = {
   name: string;
